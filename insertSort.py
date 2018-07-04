@@ -3,7 +3,7 @@ from random import randint
 # Pseudorandom function to generate data to sort
 def randomData():
     data = []
-    for i in range(1,20):
+    for i in range(1,7):
         data.append(randint(0,100))
     return data
 
@@ -34,5 +34,21 @@ def insertSorting(dataToSort):
         dataToSort[k] = tmp
     return dataToSort
 
+
+# Inprogress
+def insertSortBinarySelect(dataToSort):
+
+    n = len(dataToSort) - 1
+    j = len(dataToSort) - 2
+    print("Len: %s\t\t before: %s" %(n,j))
+    for i in range(j, -1, -1):
+        tmp = dataToSort[i]
+        indxP = i
+        indxK = n
+        print(indxP, indxK)
+    return dataToSort
+
 print(dataRandom)
-print(insertSorting(dataRandom))
+#print(insertSorting(dataRandom))
+
+insertSortBinarySelect(dataRandom)
