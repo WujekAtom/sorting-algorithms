@@ -40,31 +40,31 @@ def insertSorting(dataToSort):
 def insertSortBinarySelect(dataToSort):
 
     n = len(dataToSort) -1 # for loop, number of elements - 1
-    j = len(dataToSort) - 2 # range doesn't include firat eelement
+    j = len(dataToSort) - 2 # range doesn't include
 
-    #print("Len: %s\t\t before: %s" %(n,j))
     for i in range(j, -1, -1):
-        tmp = dataToSort[i]
-        indxP = i
-        indxK = n + 1
-       # print(indxP, indxK)
+        # starts from before last element
+        tmp = dataToSort[i]     # saving element that will be insert in proper place
+
+        #looking for the place in array when tmp can be add
+        indxP = i   # start of array when tmp will be insert
+        indxK = n   # end of array when tmp will be insert
         print("Checking: %s" %tmp)
-        while indxK - indxP > 1:    # array can be divide
-            middle = (indxK + indxP) // 2
-            if tmp >= dataToSort[middle]:
+        while indxK - indxP > 1:    # while searching array has more than 1 element
+            middle = (indxP + indxK) // 2   # calculate middle element in array: [1,2,3] -> el: 2
+
+            # if tmp is bigger than middle element, than we are looking for a place
+            # to insert on the right side od middle - it means we will divide array from
+            # right side of the middle untill the array will contains 1 element
+            print("1. %s %s" %(indxP, indxK))
+            if tmp > dataToSort[middle]:
                 indxP = middle
+                indxK = n
+                print("2. %s %s" % (indxP, indxK))
             else:
                 indxK = middle
-        #print(indxP, indxK)
-        #print("The shortest array: %s" %dataToSort[indxP:indxK])
-        # array has less than 3 elements so basic bubble checking can be done
+                print("3. %s %s" % (indxP, indxK))
 
-        for k in range(i, indxP):
-            tmp2 = [dataToSort[k], dataToSort[k+1]]
-            dataToSort[k] = tmp2[1]
-            dataToSort[k+1] = tmp2[0]
-        dataToSort[middle] = tmp
-        print(dataToSort)
 
     return dataToSort
 print("Sorting:")
