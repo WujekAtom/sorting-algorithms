@@ -52,7 +52,7 @@ def insertSortBinarySelect(dataToSort):
         print("Checking: %s" %tmp)
         while indxK - indxP > 1:    # while searching array has more than 1 element
             middle = (indxP + indxK) // 2   # calculate middle element in array: [1,2,3] -> el: 2
-
+            print("Middle: %s" %dataToSort[middle])
             # if tmp is bigger than middle element, than we are looking for a place
             # to insert on the right side od middle - it means we will divide array from
             # right side of the middle untill the array will contains 1 element
@@ -62,8 +62,25 @@ def insertSortBinarySelect(dataToSort):
                 indxK = n
                 print("2. %s %s" % (indxP, indxK))
             else:
-                indxK = middle
+                indxK = middle - 1
                 print("3. %s %s" % (indxP, indxK))
+        else:
+            print("Too short array. Tmp = %s" %tmp)
+            m = i
+            while tmp > dataToSort[indxP]:
+                #print("indxP: %s" %dataToSort[indxP])
+                print("m = %s" %m)
+                tmp2 = [tmp, dataToSort[indxP]]
+                dataToSort[m] = tmp2[1]
+                dataToSort[indxP] = tmp2[0]
+                tmp = dataToSort[m+1]
+                indxP += 1
+
+            print(dataToSort)
+
+
+
+
 
 
     return dataToSort
@@ -72,3 +89,5 @@ print(data3)
 #print(insertSorting(dataRandom))
 
 print(insertSortBinarySelect(data3))
+
+# [43, 69, 8, 25, 90, 16, 0, 51, 72]
