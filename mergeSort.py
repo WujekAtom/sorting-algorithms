@@ -1,0 +1,3 @@
+"""
+Sortowanie przez scalanie
+"""
